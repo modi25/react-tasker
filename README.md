@@ -1,6 +1,36 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ReactTasker
+
+## Project Overview
+ReactTasker is a Task & Team Management web application built with React.  
+It allows users to manage projects, assign tasks, and collaborate effectively within a team.
+
+---
+
+## Goals
+- Build a scalable React application using modern best practices.
+- Implement authentication and role-based access control.
+- Create reusable and testable UI components.
+- Integrate REST APIs for backend data management.
+- Write unit and integration tests using Jest and React Testing Library.
+- Deploy the app using CI/CD pipelines on platforms like Vercel or Netlify.
+- Ensure responsive design for multiple device types.
+
+---
+
+## Tech Stack
+- **Frontend:** React, React Router DOM, Axios
+- **State Management:** React Context API (or Redux in future iterations)
+- **Testing:** Jest, React Testing Library
+- **Styling:** Tailwind CSS (or Material UI)
+- **Deployment:** Vercel / Netlify
+- **Version Control:** Git & GitHub
+
+---
+
+## Folder Structure
+
 
 ## Available Scripts
 
