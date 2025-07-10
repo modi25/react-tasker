@@ -1,5 +1,4 @@
-import react, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import {useState} from 'react';
 
 const NavBar = () => {
 // Placeholder auth state: false means logged out, true means logged in

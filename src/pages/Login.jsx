@@ -1,24 +1,39 @@
-import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const Login = () => {
+  const initialValues = { email: '', password: '' };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email').required('Email required'),
+    password: Yup.string().min(6, 'Min 6 chars').required('Password required'),
+  });
+
+  const handleSubmit = (values) => {
+    console.log('Login Submitted:', values);
+    alert('Logged in (mock)');
+  };
+
   return (
-    <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
-      <h2>Login Page (UI only for now)</h2>
-      <form>
-        <div style={{ marginBottom: '10px' }}>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" required style={{ width: '100%', padding: '8px', marginTop: '5px' }} />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" required style={{ width: '100%', padding: '8px', marginTop: '5px' }} />
-        </div>
-        </form>
-        <button type="submit" style={{ marginTop: '10px', padding: '10px 15px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px' }}>
-          Login
-        </button>
+    <div>
+      <h2>Login</h2>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        <Form>
+          <div>
+            <label>Email:</label>
+            <Field type="email" name="email" />
+            <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+          </div>
+          <div>
+            <label>Password:</label>
+            <Field type="password" name="password" />
+            <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+          </div>
+          <button type="submit">Login</button>
+        </Form>
+      </Formik>
     </div>
-  )
+  );
 };
 
 export default Login;
