@@ -1,32 +1,31 @@
-import {useState} from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
-// Placeholder auth state: false means logged out, true means logged in
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const Navbar = () => {
+  const { user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleAuthToggle = () => {
-    setIsAuthenticated(!isAuthenticated);
+  const handleLogout = () => {
+    setUser(null);
+    navigate('/login');
   };
 
-    return (
-    <nav style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
-      <h2 style={{ display: 'inline', marginRight: '20px' }}>ReactTasker</h2>
-
-      {/* <Link to="/login" style={{ marginRight: '10px' }}>Login</Link>
-      <Link to="/signup" style={{ marginRight: '10px' }}>Signup</Link> */}
-
-      {isAuthenticated ? (
+  return (
+    <nav>
+      {user ? (
         <>
-          <button onClick={handleAuthToggle}>Logout</button>
+          <span>Welcome, {user.email}</span>
+          <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <>
-          <button onClick={handleAuthToggle}>Login</button>
+          <button onClick={() => navigate('/login')}>Login</button>
+          <button onClick={() => navigate('/signup')}>Signup</button>
         </>
       )}
     </nav>
   );
+};
 
-}
-
-export default NavBar;
+export default Navbar;
